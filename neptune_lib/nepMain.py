@@ -6,6 +6,7 @@
 #__________________________#
 # Necessary Modules For The File
 import random
+import neptune_lib
 import os
 import json
 import shutil
@@ -18,7 +19,8 @@ print("""
 
 class createProject:
 
-    
+    W_K_D = os.getcwd()
+
     def __init__(self, name, version, project_subfolders):
         self.name = name
         self.version = version
@@ -51,9 +53,12 @@ class createProject:
             #     os.makedirs(os.path.join( '', subfolder_name))
         if cls == True:
             os.mkdir("{}_RP".format(str(self.name)))
+            os.chdir("{}_RP".format(str(self.name)))
+            neptune_lib.createManifest_rp()
 
 
-    def Bes(self, cls):
+    def Beh(self, cls):
+        os.chdir(f"{self.W_K_D}/Project/{self.name}")
         if os.getcwd() == str(self.name):
             os.chdir(str(self.name))
         if cls == True:

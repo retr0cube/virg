@@ -2,7 +2,7 @@ import json
 import neptune_lib
 import uuid
 
-mnifst = {
+mnifst_rp = {
 	"format_version": 2,
 	"header": {
 		"name": "pdf" ,
@@ -31,3 +31,7 @@ mnifst = {
 		}
 	]
 }
+
+def createManifest_rp():
+	with open("manifest.json","w") as MAN_RP:
+	     json.dump(mnifst_rp , MAN_RP, indent = 4)
