@@ -34,7 +34,7 @@ class createProject:
           os.chdir(str(self.name))
           print(f"""\033[1;32;40m√ Done -  {random.randrange(-100000000,100000000)}\033[0m
           """)
-        except:
+        except Exception as e:
             print(f"""\033[1;31;40m /!\ Error : Unable to Overwrite Files (Try to Delete Them Manually)\033[0m
             """)
 
