@@ -51,7 +51,7 @@ class createProject:
             # for subfolder_name in self.project_subfolders: # Creating Sub Folders For Ressource Pack
             #     print("hi")
             #     os.makedirs(os.path.join( '', subfolder_name))
-        if cls == True:
+        if cls is True:
             os.mkdir("{}_RP".format(str(self.name)))
             os.chdir("{}_RP".format(str(self.name)))
             neptune_lib.createManifest_rp()
@@ -61,7 +61,7 @@ class createProject:
         os.chdir(f"{self.W_K_D}/Project/{self.name}")
         if os.getcwd() == str(self.name):
             os.chdir(str(self.name))
-        if cls == True:
+        if cls is True:
             os.mkdir("{}_BP".format(str(self.name)))
 
 
