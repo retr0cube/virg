@@ -1,18 +1,24 @@
+#__________________________#
 # nepMain.py - Contributors:
 # -RetroCube ;
 #
 #
-#
+#__________________________#
+# Necessary Modules For The File
 import random
 import os
-import json # Necessary Modules For The File
+import json
 import shutil
+
 
 print("""
 \033[0;34;46m🪐 Neptune API - v0.0.1_alpha - By RetroCube
 \033[0m""")
 
+
 class createProject:
+
+    
     def __init__(self, name, version, project_subfolders):
         self.name = name
         self.version = version
@@ -30,19 +36,12 @@ class createProject:
             print(f"""\033[1;31;40m /!\ Error : Unable to Overwrite Files (Try to Delete Them Manually)\033[0m
             """)
 
-
-    # def check_dir_exist(self):
-    #     if os.path.exists(str(self.name)):
-    #         proj_dir = Path(f"{str(self.name)}/{str(self.name)}_RP" if os.path.exists()
-    #         proj_dir.rmdir()
-    #     else:
-    #         pass
-
     def if_check_dir_exist(self):
         if os.path.exists(str(self.name)):
            shutil.rmtree(str(self.name), ignore_errors= True)
         else:
            pass
+
 
     def Res(self, cls):
         if os.getcwd() == str(self.name):
@@ -52,6 +51,7 @@ class createProject:
             #     os.makedirs(os.path.join( '', subfolder_name))
         if cls == True:
             os.mkdir("{}_RP".format(str(self.name)))
+
 
     def Bes(self, cls):
         if os.getcwd() == str(self.name):
