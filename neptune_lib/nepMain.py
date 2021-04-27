@@ -38,6 +38,8 @@ class createProject:
             print(f"""\033[1;31;40m /!\ Error : Unable to Overwrite Files (Try to Delete Them Manually)\033[0m
             """)
 
+    def place_holder_func(self):
+        return self.name
     def if_check_dir_exist(self):
         if os.path.exists(str(self.name)):
            shutil.rmtree(str(self.name), ignore_errors= True)

@@ -1,13 +1,16 @@
 import json
-import neptune_lib
 import uuid
+import neptune_lib
+
+uuid1 = str(uuid.uuid1)
+uuid3 = str(uuid.uuid4)
 
 mnifst_rp = {
 	"format_version": 2,
 	"header": {
-		"name": "pdf" ,
-		"description": "fre",
-		"uuid": str(uuid.uuid1),
+		"name": place_holder_func(),
+		"description": "",
+		"uuid": uuid1,
 		"version": [
 			1,
 			0,
@@ -22,7 +25,7 @@ mnifst_rp = {
 	"modules": [
 		{
 			"type": "resources",
-			"uuid": str(uuid.uuid3),
+			"uuid": uuid3,
 			"version": [
 				1,
 				0,
