@@ -7,6 +7,7 @@
 # Necessary Modules For The File
 import random
 import neptune_lib
+import uuid
 import os
 import json
 import shutil
@@ -18,34 +19,66 @@ print("""
 
 
 class createProject:
-
     W_K_D = os.getcwd()
 
-    def __init__(self, name, version, project_subfolders):
+    def __init__(self, name, version):
         self.name = name
         self.version = version
-        self.project_subfolders = project_subfolders
         os.chdir("Project")
         self.if_check_dir_exist()
         print(f"""\033[0;30;47m⏲ Loading...\033[0m
         """)
         try:
-          os.mkdir(str(self.name))
-          os.chdir(str(self.name))
-          print(f"""\033[1;32;40m√ Done -  {random.randrange(-100000000,100000000)}\033[0m
+            os.mkdir(str(self.name))
+            os.chdir(str(self.name))
+            print(f"""\033[1;32;40m√ Done -  {random.randrange(-100000000,100000000)}\033[0m
           """)
         except Exception as e:
             print(f"""\033[1;31;40m /!\ Error : Unable to Overwrite Files (Try to Delete Them Manually)\033[0m
             """)
 
-    def place_holder_func(self):
-        return self.name
     def if_check_dir_exist(self):
         if os.path.exists(str(self.name)):
-           shutil.rmtree(str(self.name), ignore_errors= True)
+            shutil.rmtree(str(self.name), ignore_errors=True)
         else:
-           pass
+            pass
 
+    uuid1 = uuid.uuid1()
+    uuid3 = uuid.uuid4()
+
+    def createManifest_rp(self):
+
+        mnifst_rp = {
+            "format_version": 2,
+            "header": {
+                "name": str(self.name),
+                "description": "",
+                "uuid": str(self.uuid1),
+                "version": [
+                    1,
+                    0,
+                    0
+                ],
+                "min_engine_version": [
+                    1,
+                    13,
+                    0
+                ]
+            },
+            "modules": [
+                {
+                    "type": "resources",
+                    "uuid": str(self.uuid3),
+                    "version": [
+                            1,
+                            0,
+                            0
+                    ]
+                }
+            ]
+        }
+        with open("manifest.json", "w") as manRP:
+            json.dump(mnifst_rp, manRP, indent=4)
 
     def Res(self, cls):
         if os.getcwd() == str(self.name):
@@ -56,8 +89,7 @@ class createProject:
         if cls is True:
             os.mkdir("{}_RP".format(str(self.name)))
             os.chdir("{}_RP".format(str(self.name)))
-            neptune_lib.createManifest_rp()
-
+            self.createManifest_rp()
 
     def Beh(self, cls):
         os.chdir(f"{self.W_K_D}/Project/{self.name}")
