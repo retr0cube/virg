@@ -21,9 +21,10 @@ print("""
 class createProject:
     W_K_D = os.getcwd()
 
-    def __init__(self, name, version):
+    def __init__(self, name, version, desc):
         self.name = name
         self.version = version
+        self.desc = desc
         os.chdir("Project")
         self.if_check_dir_exist()
         print(f"""\033[0;30;47m⏲ Loading...\033[0m
@@ -43,6 +44,11 @@ class createProject:
         else:
             pass
 
+    def projectVersion(self, v_f, v_s, v_t):
+        self.v_f = v_f
+        self.v_s = v_s
+        self.v_t = v_t
+
     uuid1 = uuid.uuid1()
     uuid3 = uuid.uuid4()
 
@@ -52,12 +58,12 @@ class createProject:
             "format_version": 2,
             "header": {
                 "name": str(self.name),
-                "description": "",
+                "description": str(self.desc),
                 "uuid": str(self.uuid1),
                 "version": [
-                    1,
-                    0,
-                    0
+                    int(self.v_f),
+                    int(self.v_s),
+                    int(self.v_t)
                 ],
                 "min_engine_version": [
                     1,
