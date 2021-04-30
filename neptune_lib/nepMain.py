@@ -9,6 +9,7 @@ import random
 import neptune_lib
 import uuid
 import os
+import time
 import json
 import shutil
 
@@ -26,17 +27,26 @@ class createProject:
         self.version = version
         self.desc = desc
         os.chdir("Project")
-        self.if_check_dir_exist()
-        print(f"""\033[0;30;47m⏲ Loading...\033[0m
+        print(f"""\033[0;30;47m⏲ Loading Files...\033[0m
         """)
+        time.sleep(0.75)
+        self.if_check_dir_exist()
+        print(f"""\033[0;30;47m⏳ Creating Ressource Pack...\033[0m
+        """)
+        time.sleep(0.75)
+        print(f"""\033[0;30;47m⌛ Creating Behavior Pack...\033[0m
+        """)
+
         try:
             os.mkdir(str(self.name))
             os.chdir(str(self.name))
-            print(f"""\033[1;32;40m√ Done -  {random.randrange(-100000000,100000000)}\033[0m
-          """)
         except Exception as e:
             print(f"""\033[1;31;40m /!\ Error : Unable to Overwrite Files (Try to Delete Them Manually)\033[0m
             """)
+
+        print(f"""\033[1;32;40m√ Done -  {random.randrange(-100000000,100000000)}\033[0m
+        """)
+
 
     def if_check_dir_exist(self):
         if os.path.exists(str(self.name)):
@@ -86,6 +96,49 @@ class createProject:
         with open("manifest.json", "w") as manRP:
             json.dump(mnifst_rp, manRP, indent=4)
 
+    def createManifest_bp(self):
+        mnifst_bp = {
+        	"format_version": 2,
+        	"header": {
+        		"name": str(self.name),
+        		"description": str(self.desc),
+        		"uuid": str(self.uuid1),
+        		"version": [
+        			int(self.v_f),
+        			int(self.v_s),
+        			int(self.v_t)
+        		],
+        		"min_engine_version": [
+        			1,
+        			13,
+        			0
+        		]
+        	},
+        	"modules": [
+        		{
+        			"type": "data",
+        			"uuid": str(uuid.uuid1()),
+        			"version": [
+        				1,
+        				0,
+        				0
+        			]
+        		}
+        	],
+        	"dependencies": [
+        		{
+        			"version": [
+        				1,
+        				0,
+        				0
+        			],
+        			"uuid": str(self.uuid3)
+        		}
+        	]
+        }
+        with open("manifest.json", "w") as manBP:
+             json.dump(mnifst_bp, manBP, indent=4)
+
     def Res(self, cls):
         if os.getcwd() == str(self.name):
             os.chdir(str(self.name))
@@ -103,7 +156,8 @@ class createProject:
             os.chdir(str(self.name))
         if cls is True:
             os.mkdir("{}_BP".format(str(self.name)))
-
+            os.chdir("{}_BP".format(str(self.name)))
+            self.createManifest_bp()
 
 if __name__ == "main":
     createProject()
