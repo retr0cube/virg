@@ -31,10 +31,10 @@ class createProject:
         """)
         time.sleep(0.75)
         self.if_check_dir_exist()
-        print(f"""\033[0;30;47m⏳ Creating Ressource Pack...\033[0m
+        print(f"""   \033[0;30;47m\ ⏳ Creating Ressource Pack...\033[0m
         """)
         time.sleep(0.75)
-        print(f"""\033[0;30;47m⌛ Creating Behavior Pack...\033[0m
+        print(f"""   \033[0;30;47m\ ⌛ Creating Behavior Pack...\033[0m
         """)
 
         try:
@@ -142,9 +142,6 @@ class createProject:
     def Res(self, cls):
         if os.getcwd() == str(self.name):
             os.chdir(str(self.name))
-            # for subfolder_name in self.project_subfolders: # Creating Sub Folders For Ressource Pack
-            #     print("hi")
-            #     os.makedirs(os.path.join( '', subfolder_name))
         if cls is True:
             os.mkdir("{}_RP".format(str(self.name)))
             os.chdir("{}_RP".format(str(self.name)))
