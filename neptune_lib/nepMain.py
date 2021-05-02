@@ -4,49 +4,53 @@
 #
 #
 #__________________________#
-# Necessary Modules For The File
+# Necessary Modules For The File #
 import random
 import neptune_lib
 import uuid
 import os
+import sys
 import time
 import json
 import shutil
 
+print("# You are using Python {}.{} #\n".format(sys.version_info.major, sys.version_info.minor))
 
-print("""
-\033[0;34;46m🪐 Neptune API - v0.0.1_alpha - By RetroCube
+print("""\033[0;34;46m🪐 Neptune API - v0.0.1_alpha - By RetroCube
 \033[0m""")
 
+if not os.path.exists("Project"):
+    os.mkdir("Project")
+else:
+    pass
 
 class createProject:
     W_K_D = os.getcwd()
 
     def __init__(self, name, version, desc):
+
         self.name = name
         self.version = version
         self.desc = desc
         os.chdir("Project")
-        print(f"""\033[0;30;47m⏲ Loading Files...\033[0m
-        """)
+        print(f"""\033[0;30;47m⏲ Loading Files...\033[0m""")
         time.sleep(0.75)
         self.if_check_dir_exist()
-        print(f"""   \033[0;30;47m\ ⏳ Creating Ressource Pack...\033[0m
-        """)
+        print(f"""   \033[0;30;47m|_ ⏳ Creating Ressource Pack...\033[0m""")
         time.sleep(0.75)
-        print(f"""   \033[0;30;47m\ ⌛ Creating Behavior Pack...\033[0m
+        print(f"""   \033[0;30;47m|_ ⌛ Creating Behavior Pack...\033[0m
         """)
 
         try:
             os.mkdir(str(self.name))
             os.chdir(str(self.name))
-        except Exception as e:
+
+        except Exception as e :
             print(f"""\033[1;31;40m /!\ Error : Unable to Overwrite Files (Try to Delete Them Manually)\033[0m
             """)
 
-        print(f"""\033[1;32;40m√ Done -  {random.randrange(-100000000,100000000)}\033[0m
+        print(f"""\033[1;32;40m√ Done - {random.randrange(-100000000,100000000)}\033[0m
         """)
-
 
     def if_check_dir_exist(self):
         if os.path.exists(str(self.name)):
@@ -146,6 +150,7 @@ class createProject:
             os.mkdir("{}_RP".format(str(self.name)))
             os.chdir("{}_RP".format(str(self.name)))
             self.createManifest_rp()
+
 
     def Beh(self, cls):
         os.chdir(f"{self.W_K_D}/Project/{self.name}")
