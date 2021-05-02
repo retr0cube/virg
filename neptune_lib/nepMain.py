@@ -14,7 +14,7 @@ import time
 import json
 import shutil
 
-print("# You are using Python {}.{} #\n".format(sys.version_info.major, sys.version_info.minor))
+print("\033[0;33;40m # You are using Python {}.{} #\033[0m \n".format(sys.version_info.major, sys.version_info.minor))
 
 print("""\033[0;34;46m🪐 Neptune API - v0.0.1_alpha - By RetroCube
 \033[0m""")
