@@ -22,17 +22,16 @@ print("""\033[0;34;46m🪐 Neptune API - v0.0.1_alpha - By RetroCube
 if not os.path.exists("Project"):
     os.mkdir("Project")
 else:
-    pass
+    os.chdir("Project")
 
 class createProject:
-    W_K_D = os.getcwd()
 
     def __init__(self, name, version, desc):
 
         self.name = name
         self.version = version
         self.desc = desc
-        os.chdir("Project")
+        self.W_K_D = os.getcwd()
         print(f"""\033[0;30;47m⏲ Loading Files...\033[0m""")
         time.sleep(0.75)
         self.if_check_dir_exist()
@@ -49,7 +48,7 @@ class createProject:
             print(f"""\033[1;31;40m /!\ Error : Unable to Overwrite Files (Try to Delete Them Manually)\033[0m
             """)
 
-        print(f"""\033[1;32;40m√ Done - {random.randrange(-100000000,100000000)}\033[0m
+        print(f"""\033[1;32;40m√ Done - {random.randrange(-1000000,1000000)}\033[0m
         """)
 
     def if_check_dir_exist(self):
@@ -153,7 +152,7 @@ class createProject:
 
 
     def Beh(self, cls):
-        os.chdir(f"{self.W_K_D}/Project/{self.name}")
+        os.chdir(f"{self.W_K_D}/{self.name}")
         if os.getcwd() == str(self.name):
             os.chdir(str(self.name))
         if cls is True:

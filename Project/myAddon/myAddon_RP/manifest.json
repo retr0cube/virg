@@ -1,0 +1,29 @@
+{
+    "format_version": 2,
+    "header": {
+        "name": "myAddon",
+        "description": "Hi! This is My Addon ",
+        "uuid": "8efa8f78-ac1d-11eb-be26-00271371f51e",
+        "version": [
+            1,
+            0,
+            0
+        ],
+        "min_engine_version": [
+            1,
+            13,
+            0
+        ]
+    },
+    "modules": [
+        {
+            "type": "resources",
+            "uuid": "ab47495a-bc88-44ab-93fd-96edb3d97f78",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        }
+    ]
+}
