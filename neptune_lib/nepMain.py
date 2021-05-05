@@ -150,7 +150,6 @@ class createProject:
             os.chdir("{}_RP".format(str(self.name)))
             self.createManifest_rp()
 
-
     def Beh(self, cls):
         os.chdir(f"{self.W_K_D}/{self.name}")
         if os.getcwd() == str(self.name):
@@ -159,6 +158,8 @@ class createProject:
             os.mkdir("{}_BP".format(str(self.name)))
             os.chdir("{}_BP".format(str(self.name)))
             self.createManifest_bp()
+
+
 
 if __name__ == "main":
     createProject()
