@@ -32,6 +32,13 @@ class createProject:
         self.version = version
         self.desc = desc
         self.W_K_D = os.getcwd()
+
+        if os.path.exists("projectName.txt"):
+            os.remove("projectName.txt")
+        if not os.path.exists("projectName.txt") :
+           with open("projectName.txt","a+") as FILE:
+                FILE.write(self.name)
+
         print(f"""\033[0;30;47m⏲ Loading Files...\033[0m""")
         time.sleep(0.75)
         self.if_check_dir_exist()

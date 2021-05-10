@@ -1,5 +1,5 @@
 #__________________________#
-# nepMain.py - Contributors:
+# nepInit.py - Contributors:
 # -RetroCube ;
 #
 #
@@ -8,6 +8,8 @@
 import os
 import json
 import neptune_lib
+
+WKD = os.getcwd()
 
 class init:
 
@@ -20,3 +22,7 @@ class init:
 
         def __init__(self, itm_name):
            self.itm_name = itm_name
+
+           os.chdir(WKD)
+           f = open("projectName.txt", "r")
+           NAME = f.read()
