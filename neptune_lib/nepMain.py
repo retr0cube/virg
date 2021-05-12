@@ -33,8 +33,6 @@ class createProject:
         self.desc = desc
         self.W_K_D = os.getcwd()
 
-        if os.path.exists("projectName.txt"):
-            os.remove("projectName.txt")
         if not os.path.exists("projectName.txt") :
            with open("projectName.txt","a+") as FILE:
                 FILE.write(self.name)
