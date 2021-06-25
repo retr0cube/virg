@@ -4,21 +4,21 @@
 #
 #
 #__________________________#
-# Necessary Modules For The File #
-import neptune_lib
-import os
+# Necessary Modules For The Project #
 import sys
 import json
 import uuid
+import shutil, os
 import logging
+#__________________________#
 
-VERS = 'v0.0.1-Alpha'
+VERS = 'v0.0.1-Alpha:02' # API's Version
 
 try:
     apiLog = "logfile.nepLog"
     if os.path.exists(apiLog):
         os.remove(apiLog)
-    for handler in logging.root.handlers[:]:
+    for handler in logging.root.handlers[:]: # Logging stuff for Errors/Issues
         logging.root.removeHandler(handler)
     logging.basicConfig(filename=apiLog,level=logging.DEBUG)
     logging.info('API Started...')
@@ -55,56 +55,66 @@ print("""\033[0;34;46m🪐 Neptune API - v0.0.1_alpha - By RetroCube
 class Init:
 
     def __init__(self, name):
-        self.name = name
+        self.name = name # The "Project" Name Variable =I
 
-        if not os.path.exists("Project"):
-           os.mkdir("Project")
-           os.chdir("Project")
-           os.mkdir(self.name)
-        else:
-           os.chdir("Project")
-           if not os.path.exists(self.name):
-              os.mkdir(self.name)
-           else:
-              os.chdir(self.name)
+        if not os.path.exists('Project'):
+            os.mkdir('Project')
+            os.chdir('Project')
+        elif os.path.exists('Project'):
+            print('1')
+            os.chdir('Project')
+            if os.path.isdir(self.name):
+                shutil.rmtree(self.name, ignore_errors= True)
+                os.mkdir(self.name)
+                os.chdir(self.name)
+            elif not os.path.isfile(self.name):
+                os.mkdir(self.name)
+                os.chdir(self.name)
 
+
+
+            # Here if the "Project" Folder Doesn't Exist It will Create it & Create The Project
+            # If it exists then it will create the Project Folder [if it exists]
 
     def projectVersion(self, v_f, v_s, v_t):
-        self.v_f = v_f
-        self.v_s = v_s
-        self.v_t = v_t
+        self.v_f = v_f # The First Left Number
+        self.v_s = v_s # The Second Center Number
+        self.v_t = v_t # The Third Right Number
 
     def createDependencies(self, res=True, beh=True):
+        print('2')
 
-        if not os.getcwd() is str(self.name):
-            try:
-              os.chdir(str(self.name))
-            except Exception:
-              print(f"""\033[1;31;40m /!\ Error : Unable to Modify Files (Try to Delete Them Manually)\033[0m
-              """)
-              logging.debug(' Failed To Modify Files ')
+        # if not os.getcwd() is str(self.name):
+        #     try: # Here this Exception Will try to change the Working Directory or an error will pop
+        #       os.chdir(str(self.name))
+        #     except Exception:
+        #       # print(f"""\033[1;31;40m /!\ Error #001 : Unable to Modify Files (Try to Delete Them Manually)\033[0m
+        #       # """) # Printing The Error in the Terminal
+        #       # logging.debug(' Failed To Modify Files ') # Logging The Error into the .nepLog File #1
+        #       # quit() # This Will Quit The Program due to the Error #003
+
 
         if res is True and beh is True:
-            logging.info('Behavior & Ressource set to TRUE')
-            folders = ['{}_res'.format(self.name), '{}_beh'.format(self.name)]
-            for folder in folders:
+            logging.info('Behavior & Ressource set to TRUE') # Logging The Info into the .nepLog File #1
+            folders = ['{}_res'.format(self.name), '{}_beh'.format(self.name)] # Sub-folders Stored in a List ;)
+            for folder in folders: # A for Loop That will Make the Two Res & Beh Directories.
                 os.mkdir(os.path.join(folder))
         elif res is True and beh is False:
             logging.info('Ressource set to TRUE')
-            os.mkdir('{}_res'.format(self.name))
+            os.mkdir('{}_res'.format(self.name)) # Doing Pretty Much The same thing Twice
         elif res is False and beh is True:
             logging.info('Behavior set to TRUE')
             os.mkdir('{}_beh'.format(self.name))
-        else:
-            print(f"""\033[1;31;40m /!\ Error #003 : You Need to specify at least One Dependency (Ressource Pack or Behavior Pack)\033[0m
-            """)
-            logging.debug(' Unable to Create Dependency \nCAUSE:root: UNSPECIFIED_DEPENDENCY ')
-            quit()
 
-        os.getcwd()
+        else: # If None of the Conditions Occured The Following Error will Pop :)
+            print(f"""\033[1;31;40m /!\ Error #003 : You Need to specify at least One Dependency (Ressource Pack or Behavior Pack)\033[0m
+            """) # Printing The Error in the Terminal
+            logging.debug(' Unable to Create Dependency \nCAUSE:root: UNSPECIFIED_DEPENDENCY ') # Logging The Error into the .nepLog File #1
+            quit() # This Will Quit The Program due to the Error #003
+
 
     def createManifest(self, isBeh, isRes, desc):
-            self.desc = desc # Déscription Amigos !
+            self.desc = desc # Descripcion Amigos !
 
             # Manifest JSON Structure fo Ressource Packs
             mnifst_rp = {
@@ -181,38 +191,39 @@ class Init:
             CURPATH = os.getcwd() # The Current Path Variable ! Duh.
 
             if isBeh is True and isRes is True:
-                os.chdir('{}_beh'.format(self.name)) # Changing Directory to the Ressource folder #0
-                with open("manifest.json", "w") as manBP: # Creating & Dumping the .json with Data #0
-                     json.dump(mnifst_bp, manBP, indent=4) #<-- Space Indentation #0
-                os.chdir(CURPATH) # This Will Return To The Original Directory #0
-                os.chdir('{}_res'.format(self.name))  # Changing Directory to the Ressource folder #1
-                with open("manifest.json", "w") as manRP: # Creating & Dumping the .json with Data #1
-                     json.dump(mnifst_rp, manRP, indent=4) #<-- Space Indentation #1
+                os.chdir('{}_beh'.format(self.name)) # Changing Directory to the Ressource folder
+                with open("manifest.json", "w") as manBP: # Creating & Dumping the .json with Data
+                     json.dump(mnifst_bp, manBP, indent=4) #<-- Space Indentation
+                os.chdir(CURPATH) # This Will Return To The Original Directory
 
-                logging.info(' ManifestRP & BP set to TRUE') # Logging The Info into the .nepLog File #1
-                os.chdir(CURPATH) # This Will Return To The Original Directory #1
+                os.chdir('{}_res'.format(self.name))
+                with open("manifest.json", "w") as manRP: # Doing The Same Thing again...
+                     json.dump(mnifst_rp, manRP, indent=4)
+
+                logging.info(' ManifestRP & BP set to TRUE')
+                os.chdir(CURPATH)
 
             elif isBeh is False and isRes is True:
-                os.chdir('{}_res'.format(self.name))  # Changing Directory to the Ressource folder #2
-                with open("manifest.json", "w") as manRP: # Creating & Dumping the .json with Data #2
-                     json.dump(mnifst_rp, manRP, indent=4) #<-- Space Indentation #2
+                os.chdir('{}_res'.format(self.name))
+                with open("manifest.json", "w") as manRP: # Still Doing it...
+                     json.dump(mnifst_rp, manRP, indent=4)
 
-                logging.info(' ManifestRP set to TRUE') # Logging The Info into the .nepLog File #2
-                os.chdir(CURPATH) # This Will Return To The Original Directory #2
+                logging.info(' ManifestRP set to TRUE')
+                os.chdir(CURPATH)
 
             elif isBeh is True and isRes is False:
-                os.chdir('{}_beh'.format(self.name)) # Changing Directory to the Behavior folder #3
-                with open("manifest.json", "w") as manBP: # Creating & Dumping the .json with Data #3
-                     json.dump(mnifst_rp, manBP, indent=4) #<-- Space Indentation :) #3
+                os.chdir('{}_beh'.format(self.name))
+                with open("manifest.json", "w") as manBP:
+                     json.dump(mnifst_rp, manBP, indent=4) # Finally! =)
 
-                logging.info(' ManifestBP set to TRUE') # Logging The Info into the .nepLog File #3
-                os.chdir(CURPATH) # This Will Return To The Original Directory ;) MAGIC! #3
+                logging.info(' ManifestBP set to TRUE')
+                os.chdir(CURPATH)
 
             elif isBeh is False and isRes is False: # If Both Conditions are False The Following Error will Pop :)
                 print(f"""\033[1;31;40m /!\ Error #004 : You Need to specify at least One Manifest file\033[0m
                 """) # Printing The Error in the Terminal
                 logging.debug(' Unable to Create Manifest files \nCAUSE:root: UNSPECIFIED_MANIFEST ') # Logging The Error into the .nepLog File
-                quit() # This Will Quit The Program due to the Erro #004
+                quit() # This Will Quit The Program due to the Error #004
 
 
 if __name__ == "main":
