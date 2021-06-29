@@ -9,11 +9,12 @@ import sys
 import json
 import uuid
 import shutil
+import time
 import os
 import logging
 #__________________________#
 
-VERS = 'v0.0.1-Alpha:02' # API's Version
+VERS = 'v0.0.1-Alpha:03' # API's Version
 
 try:
     apiLog = "logfile.nepLog"
@@ -27,11 +28,11 @@ try:
 except Exception:
        print("\033[1;31;40m /!\ Error #002 : Unable to Create A log File (Please try Again)\033[0m\n")
 
-print("\033[1;33;40m Warning \033[0m\033[1;30;40m- \033[0mYou are Using Python {}.{} \n".format(sys.version_info.major, sys.version_info.minor))
+print("\033[1;33;40m Python Info \033[0m\033[1;30;40m- \033[0mYou are Using Python {}.{} \n".format(sys.version_info.major, sys.version_info.minor))
 
 print("\033[0;36;40m Info \033[0m\033[1;30;40m- \033[0m 🌚 Neptune API by Retr0cube")
 
-print("\033[1;35;40m Version \033[0m\033[1;30;40m- \033[0m v0.0.1_p:alpha:01\n")
+print("\033[1;35;40m Version \033[0m\033[1;30;40m- \033[0m v0.0.1_p:alpha:03\n")
 
 
 # Legacy Files :)
@@ -62,6 +63,13 @@ class Init:
         if not os.path.exists('Project'):
             os.mkdir('Project')
             os.chdir('Project')
+            if os.path.isdir(self.name):
+                shutil.rmtree(self.name, ignore_errors= True)
+                os.mkdir(self.name)
+                os.chdir(self.name)
+            elif not os.path.isfile(self.name):
+                os.mkdir(self.name)
+                os.chdir(self.name)
         elif os.path.exists('Project'):      # W.I.P Work in Progress
             os.chdir('Project')
             if os.path.isdir(self.name):
@@ -71,7 +79,9 @@ class Init:
             elif not os.path.isfile(self.name):
                 os.mkdir(self.name)
                 os.chdir(self.name)
+
         print("\n\033[0;36;40m Info \033[0m Creating Project... \n")
+        time.sleep(2)
 
 
 
@@ -200,9 +210,10 @@ class Init:
                 os.chdir(CURPATH) # This Will Return To The Original Directory
 
                 os.chdir('{}_res'.format(self.name))
+                os.mkdir('textures')
                 shutil.copy(self.icon, CURPATH) # Copying the pack_icon.png image to the destination
                 with open("blocks.json", "w") as manRP: # # Creating & Dumping the blocks.json with Data
-                     json.dump('{}', manRP, indent=4)
+                     json.dump({}, manRP, indent=4)
                 with open("manifest.json", "w") as manRP: # Doing The Same Thing again...
                      json.dump(mnifst_rp, manRP, indent=4)
 
@@ -211,10 +222,10 @@ class Init:
 
             elif isBeh is False and isRes is True:
                 os.chdir('{}_res'.format(self.name))
-
+                os.mkdir('textures')
                 shutil.copy(self.icon, CURPATH) # Copying the pack_icon.png image to the destination
                 with open("blocks.json", "w") as manRP: # Still Doing it...
-                     json.dump('{}', manRP, indent=4)
+                     json.dump({}, manRP, indent=4)
                 with open("manifest.json", "w") as manRP: # Still Doing it...
                      json.dump(mnifst_rp, manRP, indent=4)
 
