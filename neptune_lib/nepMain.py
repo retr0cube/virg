@@ -14,7 +14,7 @@ import os
 import logging
 #__________________________#
 
-VERS = 'v0.0.1-Alpha:03' # API's Version
+VERS = 'v0.0.1-Alpha:04' # API's Version
 
 try:
     apiLog = "logfile.nepLog"
@@ -57,8 +57,10 @@ print("\033[1;35;40m Version \033[0m\033[1;30;40m- \033[0m v0.0.1_p:alpha:03\n")
 
 class Init:
 
-    def __init__(self, name):
-        self.name = name # The "Project" Name Variable =I
+    def __init__(self, name, version, identifier):
+        Init.name = name # The "Project" Name Variable =I
+        Init.version = version
+        Init.identifier = identifier
 
         if not os.path.exists('Project'):
             os.mkdir('Project')
@@ -245,6 +247,47 @@ class Init:
                 """) # Printing The Error in the Terminal
                 logging.debug(' Unable to Create Manifest files \nCAUSE:root: UNSPECIFIED_MANIFEST ') # Logging The Error into the .nepLog File
                 quit() # This Will Quit The Program due to the Error #004
+
+    class createObject: # W.I.P
+        def __init__(self, type, objName):
+            self.type = type
+            self.objName = objName
+            self.Item()
+
+        def Item(self):
+            if self.type == 'ITEM':
+                itemObj ={
+                	"format_version": str(Init.version),
+                	"minecraft:item": {
+                		"description": {
+                			"identifier": str('{}:{}'.format(Init.identifier, self.objName))
+                		},
+                		"components": {
+
+                		}
+                	}
+                }
+
+                os.chdir('{}_beh'.format(Init.name))
+                if os.path.isdir('items'):
+                    shutil.rmtree('items', ignore_errors= True)
+                    os.mkdir('items')
+                    os.chdir('items')
+                else:
+                    os.mkdir('items')
+                    os.chdir('items')
+
+                with open('{}.json'.format(self.objName), 'w') as itemFile:
+                    json.dump(itemObj, itemFile, indent=4)
+
+            def displayName(self, objName):
+                self.objName = objName
+
+
+
+
+
+
 
 
 if __name__ == "main":
