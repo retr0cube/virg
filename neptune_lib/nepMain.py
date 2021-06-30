@@ -35,7 +35,7 @@ print("\033[0;36;40m Info \033[0m\033[1;30;40m- \033[0m 🌚 Neptune API by Retr
 print("\033[1;35;40m Version \033[0m\033[1;30;40m- \033[0m v0.0.1_p:alpha:03\n")
 
 
-# Legacy Files :)
+# Legacy Code :)
 # class createProject:
 #
 #     def __init__(self, name, version, desc):
