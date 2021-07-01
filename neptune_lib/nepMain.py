@@ -62,25 +62,49 @@ class Init:
         Init.version = version
         Init.identifier = identifier
 
-        if not os.path.exists('Project'):
+        # if not os.path.exists('Project'):
+        #     os.mkdir('Project')
+        #     os.chdir('Project')
+        #     if os.path.isdir(self.name):
+        #         shutil.rmtree(self.name, ignore_errors= True)
+        #         os.mkdir(self.name)
+        #         os.chdir(self.name)
+        #     elif not os.path.isfile(self.name):
+        #         os.mkdir(self.name)
+        #         os.chdir(self.name)
+        # elif os.path.exists('Project'):      # W.I.P Work in Progress
+        #     os.chdir('Project')
+        #     if os.path.isdir(self.name):
+        #         shutil.rmtree(self.name, ignore_errors= True)
+        #         os.mkdir(self.name)
+        #         os.chdir(self.name)
+        #     elif not os.path.isfile(self.name):
+        #         os.mkdir(self.name)
+        #         os.chdir(self.name)
+
+
+        if os.path.isdir('Project'):
+            os.chdir('Project')
+            if os.path.isdir(self.name):
+                shutil.rmtree(self.name, ignore_errors=True)
+                os.mkdir(self.name)
+                os.chdir(self.name)
+            elif not os.path.isdir(self.name):
+                os.mkdir(self.name)
+                os.chdir(self.name)
+
+        if not os.path.isdir('Project'):
             os.mkdir('Project')
             os.chdir('Project')
             if os.path.isdir(self.name):
-                shutil.rmtree(self.name, ignore_errors= True)
+                shutil.rmtree(self.name, ignore_errors=True)
                 os.mkdir(self.name)
                 os.chdir(self.name)
-            elif not os.path.isfile(self.name):
+            elif not os.path.isdir(self.name):
                 os.mkdir(self.name)
                 os.chdir(self.name)
-        elif os.path.exists('Project'):      # W.I.P Work in Progress
-            os.chdir('Project')
-            if os.path.isdir(self.name):
-                shutil.rmtree(self.name, ignore_errors= True)
-                os.mkdir(self.name)
-                os.chdir(self.name)
-            elif not os.path.isfile(self.name):
-                os.mkdir(self.name)
-                os.chdir(self.name)
+
+
 
         print("\n\033[0;36;40m Info \033[0m Creating Project... \n")
         time.sleep(2)
@@ -96,7 +120,7 @@ class Init:
         self.v_s = v_s # The Second Center Number
         self.v_t = v_t # The Third Right Number
 
-    def createDependencies(self, res=True, beh=True):
+    def createDependencies(self, beh=True, res=True):
 
         # if not os.getcwd() is str(self.name):
         #     try: # Here this Exception Will try to change the Working Directory or an error will pop
