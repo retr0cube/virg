@@ -9,12 +9,15 @@ import sys
 import json
 import uuid
 import shutil
+import neptune_lib
 import time
 import os
+import subprocess
 import logging
+
 #__________________________#
 
-VERS = 'v0.0.1-Alpha:04' # API's Version
+VERS = 'v0.0.1-Alpha:05' # API's Version
 
 try:
     apiLog = "logfile.nepLog"
@@ -38,15 +41,15 @@ print("\033[1;35;40m Version \033[0m\033[1;30;40m- \033[0m v0.0.1_p:alpha:03\n")
 # Legacy Code :)
 # class createProject:
 #
-#     def __init__(self, name, version, desc):
+#     def __init__(Init, name, version, desc):
 #
-#         self.name = name
-#         self.version = version
-#         self.desc = desc
-#         self.W_K_D = os.getcwd()
+#         Init.name = name
+#         Init.version = version
+#         Init.desc = desc
+#         Init.W_K_D = os.getcwd()
 #         print(f"""\033[0;30;47m⏲ Loading Files...\033[0m""")
 #         time.sleep(0.75)
-#         self.if_check_dir_exist()
+#         Init.if_check_dir_exist()
 #         print(f"""   \033[0;30;47m|_ ⏳ Creating Ressource Pack...\033[0m""")
 #         time.sleep(0.75)
 #         print(f"""   \033[0;30;47m|_ ⌛ Creating Behavior Pack...\033[0m
@@ -57,92 +60,56 @@ print("\033[1;35;40m Version \033[0m\033[1;30;40m- \033[0m v0.0.1_p:alpha:03\n")
 
 class Init:
 
-    def __init__(self, name, version, identifier):
+
+    def __init__(Init, name, version, identifier):
         Init.name = name # The "Project" Name Variable =I
         Init.version = version
         Init.identifier = identifier
 
-        # if not os.path.exists('Project'):
-        #     os.mkdir('Project')
-        #     os.chdir('Project')
-        #     if os.path.isdir(self.name):
-        #         shutil.rmtree(self.name, ignore_errors= True)
-        #         os.mkdir(self.name)
-        #         os.chdir(self.name)
-        #     elif not os.path.isfile(self.name):
-        #         os.mkdir(self.name)
-        #         os.chdir(self.name)
-        # elif os.path.exists('Project'):      # W.I.P Work in Progress
-        #     os.chdir('Project')
-        #     if os.path.isdir(self.name):
-        #         shutil.rmtree(self.name, ignore_errors= True)
-        #         os.mkdir(self.name)
-        #         os.chdir(self.name)
-        #     elif not os.path.isfile(self.name):
-        #         os.mkdir(self.name)
-        #         os.chdir(self.name)
-
-
-        if os.path.isdir('Project'):
-            os.chdir('Project')
-            if os.path.isdir(self.name):
-                shutil.rmtree(self.name, ignore_errors=True)
-                os.mkdir(self.name)
-                os.chdir(self.name)
-            elif not os.path.isdir(self.name):
-                os.mkdir(self.name)
-                os.chdir(self.name)
-
-        if not os.path.isdir('Project'):
+        # Thanks To @Regular_Meltz & @Ryan at The Programming Discussion Discord Server :)
+        if not os.path.exists('Project'):
             os.mkdir('Project')
-            os.chdir('Project')
-            if os.path.isdir(self.name):
-                shutil.rmtree(self.name, ignore_errors=True)
-                os.mkdir(self.name)
-                os.chdir(self.name)
-            elif not os.path.isdir(self.name):
-                os.mkdir(self.name)
-                os.chdir(self.name)
-
-
+        os.chdir('Project')
+        if os.path.isdir(Init.name):
+            shutil.rmtree(Init.name, ignore_errors= True)  # Here if the "Project" Folder Doesn't Exist It will Create it & Create The Project
+            os.mkdir(Init.name)
+            os.chdir(Init.name)
+        elif not os.path.isfile(Init.name):
+            os.mkdir(Init.name)
+            os.chdir(Init.name)
 
         print("\n\033[0;36;40m Info \033[0m Creating Project... \n")
         time.sleep(2)
 
 
+    def projectVersion(Init, v_f, v_s, v_t):
+        Init.v_f = v_f # The First Left Number
+        Init.v_s = v_s # The Second Center Number
+        Init.v_t = v_t # The Third Right Number
 
+    def createDependencies(Init, beh=True, res=True):
 
-            # Here if the "Project" Folder Doesn't Exist It will Create it & Create The Project
-            # If it exists then it will create the Project Folder [if it exists]
-
-    def projectVersion(self, v_f, v_s, v_t):
-        self.v_f = v_f # The First Left Number
-        self.v_s = v_s # The Second Center Number
-        self.v_t = v_t # The Third Right Number
-
-    def createDependencies(self, beh=True, res=True):
-
-        # if not os.getcwd() is str(self.name):
-        #     try: # Here this Exception Will try to change the Working Directory or an error will pop
-        #       os.chdir(str(self.name))
-        #     except Exception:
-        #       # print(f"""\033[1;31;40m /!\ Error #001 : Unable to Modify Files (Try to Delete Them Manually)\033[0m
-        #       # """) # Printing The Error in the Terminal
-        #       # logging.debug(' Failed To Modify Files ') # Logging The Error into the .nepLog File #1
-        #       # quit() # This Will Quit The Program due to the Error #003
+        if not os.getcwd() is str(Init.name):
+            try: # Here this Exception Will try to change the Working Directory or an error will pop
+              os.chdir(str(Init.name))
+            except Exception:
+              print(f"""\033[1;31;40m /!\ Error #001 : Unable to Modify Files (Try to Delete Them Manually)\033[0m
+              """) # Printing The Error in the Terminal
+              logging.debug(' Failed To Modify Files ') # Logging The Error into the .nepLog File #1
+              quit() # This Will Quit The Program due to the Error #003
 
 
         if res is True and beh is True:
             logging.info('Behavior & Ressource set to TRUE') # Logging The Info into the .nepLog File #1
-            folders = ['{}_res'.format(self.name), '{}_beh'.format(self.name)] # Sub-folders Stored in a List ;)
+            folders = ['{}_res'.format(Init.name), '{}_beh'.format(Init.name)] # Sub-folders Stored in a List ;)
             for folder in folders: # A for Loop That will Make the Two Res & Beh Directories.
                 os.mkdir(os.path.join(folder))
         elif res is True and beh is False:
             logging.info('Ressource set to TRUE')
-            os.mkdir('{}_res'.format(self.name)) # Doing Pretty Much The same thing Twice
+            os.mkdir('{}_res'.format(Init.name)) # Doing Pretty Much The same thing Twice
         elif res is False and beh is True:
             logging.info('Behavior set to TRUE')
-            os.mkdir('{}_beh'.format(self.name))
+            os.mkdir('{}_beh'.format(Init.name))
 
         else: # If None of the Conditions Occured The Following Error will Pop :)
             print(f"""\033[1;31;40m /!\ Error #003 : You Need to specify at least One Dependency (Ressource Pack or Behavior Pack)\033[0m
@@ -151,21 +118,21 @@ class Init:
             quit() # This Will Quit The Program due to the Error #003
 
 
-    def createManifest(self, isBeh, isRes, desc, icon):
-            self.desc = desc # Descripcion Amigos !
-            self.icon = icon # pack_icon.png
+    def createManifest(Init, isBeh, isRes, desc, icon):
+            Init.desc = desc # Descripcion Amigos !
+            Init.icon = icon # pack_icon.png
 
             # Manifest JSON Structure fo Ressource Packs
             mnifst_rp = {
                 "format_version": 2,
                 "header": {
-                    "name": str(self.name),
-                    "description": str(self.desc),
+                    "name": str(Init.name),
+                    "description": str(Init.desc),
                     "uuid": str(uuid.uuid1()),
                     "version": [
-                        int(self.v_f),
-                        int(self.v_s),
-                        int(self.v_t)
+                        int(Init.v_f),
+                        int(Init.v_s),
+                        int(Init.v_t)
                     ],
                     "min_engine_version": [
                         1,
@@ -178,9 +145,9 @@ class Init:
                         "type": "resources",
                         "uuid": str(uuid.uuid4()),
                         "version": [
-                                int(self.v_f),
-                                int(self.v_s),
-                                int(self.v_t)
+                                int(Init.v_f),
+                                int(Init.v_s),
+                                int(Init.v_t)
                         ]
                     }
                 ]
@@ -190,13 +157,13 @@ class Init:
             mnifst_bp = {
             	"format_version": 2,
             	"header": {
-            		"name": str(self.name),
-            		"description": str(self.desc),
+            		"name": str(Init.name),
+            		"description": str(Init.desc),
             		"uuid": str(uuid.uuid4()),
             		"version": [
-            			int(self.v_f),
-            			int(self.v_s),
-            			int(self.v_t)
+            			int(Init.v_f),
+            			int(Init.v_s),
+            			int(Init.v_t)
             		],
             		"min_engine_version": [
             			1,
@@ -209,18 +176,18 @@ class Init:
             			"type": "data",
             			"uuid": str(uuid.uuid4()),
             			"version": [
-            				int(self.v_f),
-            				int(self.v_s),
-            				int(self.v_t)
+            				int(Init.v_f),
+            				int(Init.v_s),
+            				int(Init.v_t)
             			]
             		}
             	],
             	"dependencies": [
             		{
             			"version": [
-            				int(self.v_f),
-            				int(self.v_s),
-            				int(self.v_t)
+            				int(Init.v_f),
+            				int(Init.v_s),
+            				int(Init.v_t)
             			],
             			"uuid": str(uuid.uuid1())
             		}
@@ -230,14 +197,14 @@ class Init:
             CURPATH = os.getcwd() # The Current Path Variable ! Duh.
 
             if isBeh is True and isRes is True:
-                os.chdir('{}_beh'.format(self.name)) # Changing Directory to the Ressource folder
+                os.chdir('{}_beh'.format(Init.name)) # Changing Directory to the Ressource folder
                 with open("manifest.json", "w") as manBP: # Creating & Dumping the .json with Data
                      json.dump(mnifst_bp, manBP, indent=4) #<-- Space Indentation
                 os.chdir(CURPATH) # This Will Return To The Original Directory
 
-                os.chdir('{}_res'.format(self.name))
+                os.chdir('{}_res'.format(Init.name))
                 os.mkdir('textures')
-                shutil.copy(self.icon, CURPATH) # Copying the pack_icon.png image to the destination
+                shutil.copy(Init.icon, CURPATH) # Copying the pack_icon.png image to the destination
                 with open("blocks.json", "w") as manRP: # # Creating & Dumping the blocks.json with Data
                      json.dump({}, manRP, indent=4)
                 with open("manifest.json", "w") as manRP: # Doing The Same Thing again...
@@ -247,9 +214,9 @@ class Init:
                 os.chdir(CURPATH)
 
             elif isBeh is False and isRes is True:
-                os.chdir('{}_res'.format(self.name))
+                os.chdir('{}_res'.format(Init.name))
                 os.mkdir('textures')
-                shutil.copy(self.icon, CURPATH) # Copying the pack_icon.png image to the destination
+                shutil.copy(Init.icon, CURPATH) # Copying the pack_icon.png image to the destination
                 with open("blocks.json", "w") as manRP: # Still Doing it...
                      json.dump({}, manRP, indent=4)
                 with open("manifest.json", "w") as manRP: # Still Doing it...
@@ -259,7 +226,7 @@ class Init:
                 os.chdir(CURPATH)
 
             elif isBeh is True and isRes is False:
-                os.chdir('{}_beh'.format(self.name))
+                os.chdir('{}_beh'.format(Init.name))
                 with open("manifest.json", "w") as manBP:
                      json.dump(mnifst_rp, manBP, indent=4) # Finally! =)
 
@@ -273,18 +240,18 @@ class Init:
                 quit() # This Will Quit The Program due to the Error #004
 
     class createObject: # W.I.P
-        def __init__(self, type, objName):
-            self.type = type
-            self.objName = objName
-            self.Item()
+        def __init__(Init, type, objName):
+            Init.type = type
+            Init.objName = objName
+            Init.Item()
 
-        def Item(self):
-            if self.type == 'ITEM':
+        def Item(Init):
+            if Init.type == 'ITEM':
                 itemObj ={
                 	"format_version": str(Init.version),
                 	"minecraft:item": {
                 		"description": {
-                			"identifier": str('{}:{}'.format(Init.identifier, self.objName))
+                			"identifier": str('{}:{}'.format(Init.identifier, Init.objName))
                 		},
                 		"components": {
 
@@ -301,11 +268,11 @@ class Init:
                     os.mkdir('items')
                     os.chdir('items')
 
-                with open('{}.json'.format(self.objName), 'w') as itemFile:
+                with open('{}.json'.format(Init.objName), 'w') as itemFile:
                     json.dump(itemObj, itemFile, indent=4)
 
-            def displayName(self, objName):
-                self.objName = objName
+            def displayName(Init, objName):
+                Init.objName = objName
 
 
 
