@@ -6,6 +6,21 @@
 
 # Introduction
  - This is an API That helps Developers\New comers get Their job done quickly & easily.
+## Setup & Requirements:
+
+To Run Neptune You Need:
+
+- Python +3.x
+
+- A text Editor =I
+
+First, You need to download Neptune ![Here](https://github.com/retr0cube/neptune_api/releases). Then Extract it, Then click on the extracted Folder & Now You'll see something like this:
+ 
+![image](https://user-images.githubusercontent.com/61835816/124316375-69ed2700-db6d-11eb-9218-c834196074d3.png)
+
+Here's the ![Wiki](https://github.com/retr0cube/neptune_api/wiki) For More info :)
+
+
  
 
 
