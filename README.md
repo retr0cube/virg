@@ -11,12 +11,11 @@
 To Run Neptune You Need:
 
 - Python +3.x
-
 - A text Editor =I
 
-First, You need to download Neptune ![Here](https://github.com/retr0cube/neptune_api/releases). Then Extract it, Then click on the extracted Folder & Now You'll see something like this:
- 
-![image](https://user-images.githubusercontent.com/61835816/124316375-69ed2700-db6d-11eb-9218-c834196074d3.png)
+First, You need to download Neptune ![Here](https://github.com/retr0cube/neptune_api/releases). Then you need Extract it, Then a folder will appear named `nepAPI_xxxx_xxxx`,Then click it & Now You'll see something like this:
+
+![image](https://user-images.githubusercontent.com/61835816/124489292-b8d2d080-dda8-11eb-84fc-fb3a09aa735f.png)
 
 Here's the ![Wiki](https://github.com/retr0cube/neptune_api/wiki) For More info :)
 
