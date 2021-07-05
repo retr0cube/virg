@@ -12,7 +12,6 @@ import shutil
 import neptune_lib
 import time
 import os
-import subprocess
 import logging
 
 #______Logging Stuff_______#
