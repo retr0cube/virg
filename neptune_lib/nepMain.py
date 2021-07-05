@@ -26,7 +26,7 @@ try:
     logging.info('API Started...')
     logging.debug('Init Class started...\n')
 except Exception:
-       print("\033[1;31;40m /!\ Error #002 : Unable to Create A log File (Please try Again)\033[0m\n")
+       print("\033[1;31;40m /!\ Error #001 : Unable to Create A log File (Please try Again)\033[0m\n")
 
 #__________________________#
 
@@ -52,7 +52,7 @@ class createProject:
             os.mkdir('Project')
         os.chdir('Project')
         if os.path.isdir(createProject.name):
-            shutil.rmtree(createProject.name, ignore_errors= True)  # Here if the "Project" Folder Doesn't Exist It will Create it & Create The Project
+            shutil.copytree(createProject.name, createProject.name , dirs_exist_ok=True)  # Here if the "Project" Folder Doesn't Exist It will Create it & Create The Project
             os.mkdir(createProject.name)
             os.chdir(createProject.name)
         elif not os.path.isfile(createProject.name):
@@ -93,9 +93,9 @@ class createProject:
             os.mkdir('{}_beh'.format(createProject.name))
 
         else: # If None of the Conditions Occured The Following Error will Pop :)
-            print(f"""\033[1;31;40m /!\ Error #003 : You Need to specify at least One Dependency (Ressource Pack or Behavior Pack)\033[0m
+            print(f"""\033[1;31;40m /!\ Error #002 : You Need to specify at least One Dependency (Ressource Pack or Behavior Pack)\033[0m
             """) # Printing The Error in the Terminal
-            logging.debug(' Unable to Create Dependency \nCAUSE:root: UNSPECIFIED_DEPENDENCY ') # Logging The Error into the .nepLog File #1
+            logging.error(' Unable to Create Dependency \nCAUSE:root: UNSPECIFIED_DEPENDENCY ') # Logging The Error into the .nepLog File #1
             quit() # This Will Quit The Program due to the Error #003
 
         #__________________________#
@@ -287,6 +287,7 @@ class createObject: # W.I.P
             #__________________________#
 
             os.chdir('{}_beh'.format(createProject.name))
+            logging.info(' Creating Items...')
             if os.path.isdir('items'):
                 shutil.rmtree('items', ignore_errors= True)
                 os.mkdir('items')
