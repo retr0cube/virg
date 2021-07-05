@@ -1,17 +1,19 @@
+#_____The API Module____#
 import neptune_lib as Neptune
 
-descr = "Hi! This is My Addon "
-#
-# Project = Neptune.createProject("myAddon","1.16.210", descr)
-# Project.projectVersion(1,0,0)
-# Project.Res(True)
-# Project.Beh(True)
-#
-# Neptune.init("&","&").Item("dskd")
+descr = "Hi! This is a Dummy " # This is The Description Variable for your project
+icon = "pack_icon.png" # The "pack_icon.png" Path for your project
 
-MAIN = Neptune.Init('NeptuneDummy')
-MAIN.createDependencies(True, True)
-MAIN.projectVersion(0,0,1)
-MAIN.createManifest(True, True ,descr)
-# Neptune.init.Res(True)
-# Neptune.init.Beh(True)
+#_____Project Properties____#
+
+add_on = Neptune.createProject('NeptuneDummy', 'nepy')  #This Class Will create the project
+add_on.createDependencies(True, True) # This Method create the Behavior Pack/Ressource Pack
+
+#_____Manifest Properties____#
+
+add_on.projectVersion(0,1,1) # The Project Version e.g('1.0.0','4.5.3')
+add_on.projectProperties(descr, icon) # Here You put a description & an icon for your project
+
+#_____Object Creation____#
+
+# Neptune.createObject("ITEM","myItem","1.17.0") Soon™
