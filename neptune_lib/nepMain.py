@@ -9,7 +9,6 @@ import sys
 import json
 import uuid
 import shutil
-import neptune_lib
 import time
 import os
 import logging
@@ -52,7 +51,11 @@ class createProject:
             os.mkdir('Project')
         os.chdir('Project')
         if os.path.isdir(createProject.name):
-            shutil.copytree(createProject.name, createProject.name , dirs_exist_ok=True)  # Here if the "Project" Folder Doesn't Exist It will Create it & Create The Project
+            try:
+              shutil.rmtree(createProject.name, ignore_errors=True)  # Here if the "Project" Folder Doesn't Exist It will Create it & Create The Project
+              time.sleep(1)
+            except Exception :
+               print("\033[1;31;40m /!\ Error #003 : Unable to Create The Project(Please try to delete them properly)\033[0m\n")
             os.mkdir(createProject.name)
             os.chdir(createProject.name)
         elif not os.path.isfile(createProject.name):
@@ -266,7 +269,6 @@ class createObject: # W.I.P
         createObject.type = typecreateObject
         createObject.formay_version = version
         createObject.objName = objName
-        createObject.Item()
 
     #__________________________#
 
