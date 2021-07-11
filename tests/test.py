@@ -1,5 +1,5 @@
 #_____The API Module____#
-import neptune_api.neptune_lib as Neptune
+import neptune_lib as Neptune
 
 descr = "Hi! This is a Dummy " # This is The Description Variable for your project
 icon = "pack_icon.png" # The "pack_icon.png" Path for your project
