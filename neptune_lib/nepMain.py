@@ -11,6 +11,7 @@ import uuid
 import zipfile
 import shutil
 import time
+import send2trash
 import os
 import logging
 
@@ -39,8 +40,7 @@ class createProject:
                 os.mkdir('Project')
             os.chdir('Project')
             if os.path.isdir(createProject.name):
-                shutil.rmtree(createProject.name, ignore_errors=True)  # Here if the "Project" Folder Doesn't Exist It will Create it & Create The Project
-                time.sleep(2)
+                send2trash.send2trash(createProject.name)  # Here if the "Project" Folder Doesn't Exist It will Create it & Create The Project
                 os.mkdir(createProject.name)
                 os.chdir(createProject.name)
             elif not os.path.isfile(createProject.name):
