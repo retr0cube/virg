@@ -1,9 +1,9 @@
-import neptune_lib.nepMain
-from neptune_lib.nepMain import *
+import neptune_exp.main
+from neptune_exp.main import *
 
 #__________________________#
 
-apiVersion = 'v0.0.2_p:alpha:2' # API's Version
+apiVersion = 'Experimental v1' # API's Version
 
 print("\033[1;33;40m Python Info \033[0m\033[1;30;40m- \033[0mYou are Using Python {}.{} \n".format(sys.version_info.major, sys.version_info.minor))
 
