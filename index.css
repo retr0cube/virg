@@ -5,32 +5,34 @@ body {
   background-color: white;
 }
 
-.top,.title {
+.top, .title {
+  background-size: contain;
   float: right !important;
   width: 100%;
   background-color: #0d1117;
 }
 
 .logo {
+  display: flex !important;
+  flex-wrap: wrap;
   float: left !important;
-  padding-top: 2.9px;
-  width: 2.3%;
+  cursor: pointer;
   margin-right: 50px;
   margin-left: 20px;
-  margin-top: -41px;
-  margin-bottom: 8.5px;
+  margin-top: -40.8px;
+  width:  2rem;
+  height: 2rem;
+  display: inline-block;
+
 }
 
-.logo:hover {
-  cursor: pointer;
-}
 
 .t2{
   color: white;
   font-size: 13.4px;
   font-family: 'Poppins', sans-serif;
   margin-right: 1px;
-  margin-top: 18px;
+  margin-top: 18.3px;
   margin-bottom: 8.5px;
   text-decoration: none;
   float: right !important;
@@ -72,4 +74,16 @@ body {
 .b1:hover {
     background-color: white;
     color: #316dca;
+}
+
+.midimg {
+   width: 100%;
+   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 100%);
+}
+
+.midimg::after {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 100%);
+  margin-top: -150px;
+  height: 150px;
+  width: 100%;
 }
