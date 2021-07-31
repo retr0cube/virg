@@ -44,12 +44,3 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - publish-to-pypi:
-          requires:
-            - build-and-test
-            - lint-and-coverage
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
