@@ -41,8 +41,9 @@ jobs:
           name: Install dependencies
           command: |
             pip3 install pytest
-      
-      
+      - run:
+          name: ls
+          command: ls
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
