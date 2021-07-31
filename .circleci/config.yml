@@ -41,14 +41,8 @@ jobs:
           name: Install dependencies
           command: |
             pip3 install pytest
-      - run:
-          name: Change Directory
-          command: cd test
-          
-      - run:
-          name: List Directory
-          command: ls
+
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
-          command: pytest test.py
+          command: pytest test\\test.py
