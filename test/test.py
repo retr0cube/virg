@@ -1,8 +1,15 @@
 #_____The API Module____#
 import neptune_lib as Neptune
+import os
+
+#___________________________#
+
+script_path = os.path.dirname(__file__)
+
+#___________________________#
 
 descr = "Hi! This is My add-on" # This is The Description Variable for your project
-icon = r"src/pack_icon.png" # The "pack_icon.png" Path for your project
+icon = os.path.join("{}\\src".format(script_path), 'icon.png') # The "pack_icon.png" Path for your project
 
 #_____Project Properties____#
 
