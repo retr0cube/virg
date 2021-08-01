@@ -1,4 +1,4 @@
-import neptune_exp.__main__
-import neptune_exp.core
-from neptune_exp.__main__ import *
-from neptune_exp.core import create_project
+import neptune_lib.__main__
+import neptune_lib.core
+from neptune_lib.__main__ import *
+from neptune_lib.core import create_project
