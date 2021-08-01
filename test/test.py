@@ -6,7 +6,7 @@ icon = r"src/pack_icon.png" # The "pack_icon.png" Path for your project
 
 #_____Project Properties____#
 
-add_on = Neptune.create_project.CreateProject(4,"3")  #This Class Will create the project
+add_on = Neptune.create_project.CreateProject( "myaddon","mya")  #This Class Will create the project
 add_on.create_dependencies(True, True) # This Method create the Behavior Pack/Ressource Pack
 
 #_____Manifest Properties____#
