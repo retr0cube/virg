@@ -113,7 +113,6 @@ class CreateProject:
             os.mkdir('{}_beh'.format(self.name))
 
         else: # If None of the Conditions Occured The Following Error will Pop :)
-            print("\033[1;31;40m /!\ Error #002 : You Need to specify at least One Dependency (Ressource Pack or Behavior Pack)\033[0m") # Printing The Error in the Terminal
             logging.error(' Unable to Create Dependency \nCAUSE:root: UNSPECIFIED_DEPENDENCY ') # Logging The Error into the .nepLog File #1
             quit() # This Will Quit The Program due to the Error #003
 
