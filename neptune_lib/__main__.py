@@ -8,7 +8,7 @@
 import os
 import logging
 import sys
-import neptune_exp
+import neptune_lib
 import atexit
 
 #__________________________#
