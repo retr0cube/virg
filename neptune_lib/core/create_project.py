@@ -90,11 +90,11 @@ class CreateProject:
         self.res = res
         self.beh = beh
 
-        if type(self.beh) != str:
+        if type(self.beh) != bool:
             print("\033[1;30;40m-\033[0m\033[1;31;40m Error \033[0m\033[1;30;40m- \033[0m\n")
             raise ValueError(" self.beh should be a bool type.\n")
 
-        if type(self.res) != str:
+        if type(self.res) != bool:
             print("\033[1;30;40m-\033[0m\033[1;31;40m Error \033[0m\033[1;30;40m- \033[0m\n")
             raise ValueError(" self.res should be a bool type.\n")
 
