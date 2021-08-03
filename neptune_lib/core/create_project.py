@@ -40,11 +40,11 @@ class CreateProject:
 
         #__________________________#
 
-        if type(self.name) != str:
+        if not self.name:
             print("\033[1;30;40m-\033[0m\033[1;31;40m Error \033[0m\033[1;30;40m- \033[0m\n")
             raise ValueError(" self.name should be a str type.\n")
 
-        if type(self.identifier) != str:
+        if not self.identifier:
             print("\033[1;30;40m-\033[0m\033[1;31;40m Error \033[0m\033[1;30;40m- \033[0m\n")
             raise ValueError(" self.identifier should be a str type.\n")
 

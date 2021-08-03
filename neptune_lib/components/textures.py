@@ -1,9 +1,17 @@
+#_________________________#
+# textures.py - Contributors:
+# -RetroCube ;
+#
+#
+#________Modules__________#
+
+
 from __future__ import annotations
-from typing import List, Dict, Union, Optional
+# from typing import List, Dict, Union, Optional
 import json
 
 import attr
-import cattr
+# import cattr
 
 @attr.dataclass
 class Block:
@@ -31,3 +39,10 @@ class Textures:
 @attr.dataclass
 class Sound:
     type: str
+
+
+# BlockJsonSchema = Dict[str, Block]
+# data = {"project:block": Block(brightness_gamma=2,
+#                                carried_textures=CarriedTexture(down="grass_carried_top"))}
+#
+# print(json.dumps(cattr.unstructure(data), indent=4))
