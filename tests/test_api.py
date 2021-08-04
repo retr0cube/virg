@@ -1,5 +1,6 @@
 #_____The API Module____#
-import neptune_lib as Neptune
+import neptune_lib
+from neptune_lib.core import create_project as Neptune
 import os
 
 #___________________________#
@@ -13,7 +14,7 @@ icon = os.path.join("{}/src".format(script_path), 'pack_icon.png') # The "pack_i
 
 #_____Project Properties____#
 
-add_on = Neptune.create_project.CreateProject( "myaddon","mya")  #This Class Will create the project
+add_on = Neptune.CreateProject( "myaddon","mya")  #This Class Will create the project
 add_on.create_dependencies(True, True) # This Method create the Behavior Pack/Ressource Pack
 
 #_____Manifest Properties____#
