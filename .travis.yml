@@ -9,10 +9,15 @@ python:
   - "3.9"
   - "3.9-dev"  # 3.9 development branch
   - "nightly"  # nightly build
+
+jobs:
+  include:
+    env: NEPPATH=./neptune_lib
+
+
 # command to install dependencies
 install:
   - pip install -r requirements.txt
-  - pip install ./neptune_lib
 
 # command to run tests
 script:
