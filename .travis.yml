@@ -12,7 +12,7 @@ python:
 
 jobs:
   include:
-    env: NEPPATH=./neptune_lib
+    env: NEPPATH=/c/travis/build/retr0cube
 
 
 # command to install dependencies
