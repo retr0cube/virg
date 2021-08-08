@@ -1,89 +1,78 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;200;700&display=swap");
 
-body {
+*{
   margin:0;
-  background-color: white;
+  padding:0;
+}
+body{
+  background-image: url(https://retr0cube.github.io/neptune_api/img1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.mid {
+  height: 90vh;
+  padding-inline: 1vw;
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0) 0, rgba(49, 109, 202, 1) 100%);
+}
+header{
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0D1117;
+  height: 8vh;
+  padding-inline: 1vw;
 }
 
-.top, .title {
-  background-size: contain;
-  float: right !important;
-  width: 100%;
-  background-color: #0d1117;
+.logo{
+  background-image: url(logo.png);
+  background-size:cover;
+  width: 4.5vh;
+  height: 4.5vh;
 }
-
-.logo {
-  display: flex !important;
-  flex-wrap: wrap;
-  float: left !important;
-  cursor: pointer;
-  margin-right: 50px;
-  margin-left: 20px;
-  margin-top: -40.8px;
-  width:  2rem;
-  height: 2rem;
-  display: inline-block;
-
+.right{
+  display: flex;
+  align-items: center;
 }
-
-
-.t2{
-  color: white;
-  font-size: 13.4px;
-  font-family: 'Poppins', sans-serif;
-  margin-right: 1px;
-  margin-top: 18.3px;
-  margin-bottom: 8.5px;
+.b2{
   text-decoration: none;
-  float: right !important;
-  display: inline-block;
+  cursor: pointer;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  margin-right: 50px;
   transition: color 0.3s ease 0s;
 }
 
-
-.t3 {
-  color: white;
-  font-size: 13.4px;
-  font-family: 'Poppins', sans-serif;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-top: 15px;
-  margin-bottom: 11.5px;
-  text-decoration: none;
-  float: right !important;
-  display: inline-block;
-}
-
-.t2:hover{
+.b2:hover{
   color: #316dca;
 }
 
-.b1 {
-  background-color: #316dca;
-  border: none;
-  border-radius: 50px;
-  padding-top: 1.5px;
-  padding-bottom: 1.5px;
-  padding-left: 30px;
-  padding-right: 30px;
+.b1{
+  text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.5s ease 0s;
-
+  color: #fff;
+  background-color: #316DCA;
+  font-family: 'Poppins', sans-serif;
+  padding: 7px 37px;
+  border-radius: 50px;
+  transition: color 1s ease 0s;
 }
 
 .b1:hover {
     background-color: white;
     color: #316dca;
 }
-
-.midimg {
-   width: 100%;
-   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 100%);
+.bt {
+  color: #fff;
+  padding-top: 200px;
+  font-size: 90px;
+  font-family: 'Poppins', sans-serif;
 }
+.st{
+  color: #daeaf0;
+  font-weight: 600;
+  font-size: 23px;
+  padding-left: 20px;
+  font-family: Segoe UI,sans-serif,Segoe UI Emoji;
 
-.midimg::after {
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #fff 100%);
-  margin-top: -150px;
-  height: 150px;
-  width: 100%;
 }
