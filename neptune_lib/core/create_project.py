@@ -11,7 +11,6 @@ import logging
 import time
 import json
 import uuid
-
 import send2trash
 
 #__________________________#
@@ -20,23 +19,16 @@ main_path = os.getcwd()
 
 #__________________________#
 
-# TODO: Add Exceptions
-
-#__________________________#
-
 class CreateProject:
-
-    def _get_project_name(self):
-        return self.name
-
-    def _get_project_version(self):
-        return self.version
-
     #__________________________#
 
     def __init__(self, name: str, identifier: str):
         self.name = name
         self.identifier = identifier
+
+        #__________________________#
+
+        project_cfg = {'name':self.name,'identifier':self.identifier}
 
         #__________________________#
 
@@ -57,6 +49,21 @@ class CreateProject:
 
         #__________________________#
 
+        if os.path.isdir('.neptune_cfg'):
+            send2trash.send2trash('.neptune_cfg')
+            os.mkdir('.neptune_cfg')
+            os.chdir('.neptune_cfg')
+        elif not os.path.isfile('.neptune_cfg'):
+            os.mkdir('.neptune_cfg')
+            os.chdir('.neptune_cfg')
+
+        with open('{}_cfg.json'.format(self.name), 'w') as cfg:
+            json.dump(project_cfg, cfg, indent=4)
+
+        os.chdir(main_path)
+
+        #__________________________#
+
         logging.info(" Creating project...")
         try:
             if not os.path.exists('Project'):
@@ -74,6 +81,7 @@ class CreateProject:
             logging.error(" Task ended with an Exception! An error occured while creating the project, please try again!")
             print("\033[1;31;40m Error #2 \033[0m\033[1;30;40m-\033[0m  Unable to Create the Project. (Please try to delete it manually) ")
             quit()
+
 
     def project_version(self, version: list):
         self.version = version
@@ -113,6 +121,8 @@ class CreateProject:
             os.mkdir('{}_beh'.format(self.name))
 
         else: # If None of the Conditions Occured The Following Error will Pop :)
+            print("\033[1;30;40m-\033[0m\033[1;31;40m Error \033[0m\033[1;30;40m- \033[0m\n")
+            raise ValueError(" self.res or self.beh should be specified.\n")
             logging.error(' Unable to Create Dependency \nCAUSE:root: UNSPECIFIED_DEPENDENCY ') # Logging The Error into the .nepLog File #1
             quit() # This Will Quit The Program due to the Error #003
 
@@ -132,26 +142,14 @@ class CreateProject:
                     "name": str(self.name),
                     "description": str(self.desc),
                     "uuid": str(uuid.uuid1()),
-                    "version": [
-            				int(self.version[0]),
-            				int(self.version[1]),
-            				int(self.version[2])
-                    ],
-                    "min_engine_version": [
-                        1,
-                        13,
-                        0
-                    ]
+                    "version":  [int(self.version[0]), int(self.version[1]), int(self.version[2])],
+                    "min_engine_version":  [1,13,0]
                 },
                 "modules": [
                     {
                         "type": "resources",
                         "uuid": str(uuid.uuid4()),
-                        "version": [
-            				int(self.version[0]),
-            				int(self.version[1]),
-            				int(self.version[2])
-                        ]
+                        "version":  [int(self.version[0]), int(self.version[1]), int(self.version[2])]
                     }
                 ]
             }
@@ -165,35 +163,19 @@ class CreateProject:
             		"name": str(self.name),
             		"description": str(self.desc),
             		"uuid": str(uuid.uuid4()),
-            		"version": [
-            				int(self.version[0]),
-            				int(self.version[1]),
-            				int(self.version[2])
-            		],
-            		"min_engine_version": [
-            			1,
-            			13,
-            			0
-            		]
+            		"version": [int(self.version[0]), int(self.version[1]), int(self.version[2])],
+            		"min_engine_version": [1,13,0]
             	},
             	"modules": [
             		{
             			"type": "data",
             			"uuid": str(uuid.uuid4()),
-            			"version": [
-            				int(self.version[0]),
-            				int(self.version[1]),
-            				int(self.version[2])
-            			]
+            			"version": [int(self.version[0]), int(self.version[1]), int(self.version[2])]
             		}
             	],
             	"dependencies": [
             		{
-            			"version": [
-            				int(self.version[0]),
-            				int(self.version[1]),
-            				int(self.version[2])
-            			],
+            			"version": [int(self.version[0]), int(self.version[1]), int(self.version[2])],
             			"uuid": str(uuid.uuid1())
             		}
             	]
@@ -201,33 +183,21 @@ class CreateProject:
 
             #__________________________#
 
-            # Manifest JSON Structure fo Behavior Packs
+            # Manifest JSON Structure fo Behavior Packs without dependencies
             mnifst = {
             	"format_version": 2,
             	"header": {
             		"name": str(self.name),
             		"description": str(self.desc),
             		"uuid": str(uuid.uuid4()),
-            		"version": [
-            				int(self.version[0]),
-            				int(self.version[1]),
-            				int(self.version[2])
-            		],
-            		"min_engine_version": [
-            			1,
-            			13,
-            			0
-            		]
+            		"version": [int(self.version[0]), int(self.version[1]), int(self.version[2])],
+            		"min_engine_version": [1,13,0]
             	},
             	"modules": [
             		{
             			"type": "data",
             			"uuid": str(uuid.uuid4()),
-            			"version": [
-            				int(self.version[0]),
-            				int(self.version[1]),
-            				int(self.version[2])
-            			]
+            			"version": [int(self.version[0]), int(self.version[1]), int(self.version[2])]
             		}
             	]
              }
@@ -243,21 +213,18 @@ class CreateProject:
                 with open("manifest.json", "w") as manBP: # Creating & Dumping the .json with Data
                      json.dump(mnifst_bp, manBP, indent=4) #<-- Space Indentation
                      shutil.copy(self.icon, os.getcwd()) # Copying the pack_icon.png image to the destination
-                os.chdir(project_root) # This Will Return To The Original Directory
-                os.chdir('{}_res'.format(self.name))
+                os.path.join(project_root, '{}_res'.format(self.name)) # This Will Return To The Original Directory
                 os.mkdir('textures')
                 with open("manifest.json", "w") as manRP: # Doing The Same Thing again...
                      json.dump(mnifst_rp, manRP, indent=4)
-                     shutil.copy(self.icon, os.getcwd()) # Copying the pack_icon.png image to the destination
+                shutil.copy(self.icon, os.getcwd()) # Copying the pack_icon.png image to the destination
 
             elif self.beh is False and self.res is True:
                 os.chdir('{}_res'.format(self.name))
                 os.mkdir('textures')
                 with open("manifest.json", "w") as manRP: # Still Doing it...
                      json.dump(mnifst_rp, manRP, indent=4)
-
                 shutil.copy(self.icon, os.getcwd()) # Copying the pack_icon.png image to the destination
-
             elif self.beh is True and self.res is False:
                 os.chdir('{}_beh'.format(self.name))
                 with open("manifest.json", "w") as manBP:
@@ -268,7 +235,6 @@ class CreateProject:
 
             #__________________________#
 
-            os.chdir(main_path) # This Will Return To The Original Directory
 
 
-#__________________________#
+os.chdir(main_path) # This Will Return To The Original Directory

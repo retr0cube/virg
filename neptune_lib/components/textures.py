@@ -15,8 +15,10 @@ import attr
 
 @attr.dataclass
 class Block:
-    brightness_gamma: int
-    carried_textures: Union[CarriedTexture, str]
+    brightness_gamma: int = None
+    textures: Union[Textures, str] = None
+    sound: Union[Sound, str] = None
+    carried_textures: Union[CarriedTexture, str] = None
 
 @attr.dataclass
 class CarriedTexture:
@@ -39,10 +41,3 @@ class Textures:
 @attr.dataclass
 class Sound:
     type: str
-
-
-# BlockJsonSchema = Dict[str, Block]
-# data = {"project:block": Block(brightness_gamma=2,
-#                                carried_textures=CarriedTexture(down="grass_carried_top"))}
-#
-# print(json.dumps(cattr.unstructure(data), indent=4))

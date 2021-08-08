@@ -10,16 +10,10 @@ python:
   - "3.9-dev"  # 3.9 development branch
   - "nightly"  # nightly build
 
-jobs:
-  include:
-    env: NEPPATH=/c/travis/build/retr0cube
-
-
 # command to install dependencies
 install:
-  - pwd
   - pip install -r requirements.txt
 
 # command to run tests
 script:
-  - python3 ./tests/test_api.py
+  - python3 ./neptune_lib/tests/test_api.py
