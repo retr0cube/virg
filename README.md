@@ -15,4 +15,4 @@
 
 - Wiki -> https://github.com/retr0cube/neptune_api/wiki
 - Downloads -> https://github.com/retr0cube/neptune_api/releases
-- Website [W.I.P] -> https://retr0cube.github.io/neptune_api
+- Website -> https://retr0cube.github.io/neptune_api
