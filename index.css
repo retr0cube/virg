@@ -9,10 +9,21 @@ body{
   background-size: cover;
   background-repeat: no-repeat;
 }
-.mid {
+.mid-top {
   height: 90vh;
   padding-inline: 1vw;
-  background-image: linear-gradient(to left, rgba(255, 255, 255, 0) 0, rgba(49, 109, 202, 1) 100%);
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #0D1117 100%);
+}
+.mid-medium {
+  height: 90vh;
+  padding-top: 5vw;
+  padding-inline: 1.8vw;
+  background: linear-gradient(90deg, rgba(2,52,150,1) 0%, rgba(49,109,202,1) 100%);
+}
+.mid-bottom {
+  height: 46vh;
+  padding-inline: 1.8vw;
+  background-color: #0D1117;
 }
 header{
   max-width: 100%;
@@ -21,12 +32,13 @@ header{
   align-items: center;
   background-color: #0D1117;
   height: 8vh;
-  padding-inline: 1vw;
+  padding-inline: 1.8vw;
 }
 
 .logo{
   background-image: url(logo.png);
-  background-size:cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   width: 4.5vh;
   height: 4.5vh;
 }
@@ -36,13 +48,11 @@ header{
 }
 .b2{
   text-decoration: none;
+  padding: 7px 37px;
   cursor: pointer;
   color: #fff;
-  font-family: 'Poppins', sans-serif;
-  margin-right: 50px;
-  transition: color 0.3s ease 0s;
+  font-family: 'Poppins', sans-serif !important;
 }
-
 .b2:hover{
   color: #316dca;
 }
@@ -52,7 +62,7 @@ header{
   cursor: pointer;
   color: #fff;
   background-color: #316DCA;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif !important;
   padding: 7px 37px;
   border-radius: 50px;
   transition: color 1s ease 0s;
@@ -60,19 +70,50 @@ header{
 
 .b1:hover {
     background-color: white;
+    border-radius: 10px;
     color: #316dca;
 }
 .bt {
   color: #fff;
+  padding-left: 17.5px;
   padding-top: 200px;
   font-size: 90px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif !important;
+}
+.shields {
+  padding-left: 20.3px;
 }
 .st{
   color: #daeaf0;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 23px;
+  padding-top: 8px;
   padding-left: 20px;
-  font-family: Segoe UI,sans-serif,Segoe UI Emoji;
+  font-family: Montserrat,sans-serif,Segoe UI Emoji;
+}
 
+.intro {
+  border-radius: 25px;
+  padding-top: 1vh;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  color: #fff;
+  background-color: #0D1117;
+}
+.intro-title {
+    font-size: 35px;
+    padding-top: 1vh;
+    text-align: center;
+    font-family: 'Poppins', sans-serif,Segoe UI Emoji !important;
+}
+.intro-desc {
+    text-indent: 20px;
+    font-weight: 400;
+    font-size: 20px;
+    padding-top: 2.5vh;
+    padding-bottom: 5vh;
+    font-family: Montserrat,sans-serif,Segoe UI Emoji;
+}
+.cd-exam {
+  max-width: 100%;
 }
