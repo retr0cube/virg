@@ -122,9 +122,9 @@ class CreateProject:
 
         else: # If None of the Conditions Occured The Following Error will Pop :)
             print("\033[1;30;40m-\033[0m\033[1;31;40m Error \033[0m\033[1;30;40m- \033[0m\n")
-            raise ValueError(" self.res or self.beh should be specified.\n")
             logging.error(' Unable to Create Dependency \nCAUSE:root: UNSPECIFIED_DEPENDENCY ') # Logging The Error into the .nepLog File #1
-            quit() # This Will Quit The Program due to the Error #003
+            raise ValueError(" self.res or self.beh should be specified.\n")
+
 
         #__________________________#
 
