@@ -1,4 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;200;700&display=swap");
+@font-face {
+  font-family: "nepPoppins";
+  src: url("Poppins-SemiBold.ttf");
+}
+@font-face {
+  font-family: "nepMonts";
+  src: url("Montserrat-Regular.ttf");
+}
 
 *{
   margin:0;
@@ -11,19 +18,18 @@ body{
 }
 .mid-top {
   height: 90vh;
-  padding-inline: 1vw;
   background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #0D1117 100%);
 }
 .mid-medium {
   height: 90vh;
   padding-top: 5vw;
-  padding-inline: 1.8vw;
-  background: linear-gradient(90deg, rgba(2,52,150,1) 0%, rgba(49,109,202,1) 100%);
+  padding-right: 10vh;
+  padding-left: 10vh;
+  background: linear-gradient(to top, rgba(69,0,245,1) 0%, rgba(4,115,255,1) 100%);
 }
 .mid-bottom {
   height: 46vh;
-  padding-inline: 1.8vw;
-  background-color: #0D1117;
+  background: linear-gradient(to bottom, rgba(69,0,245,1) 0%, rgba(13,17,23,1) 100%);
 }
 header{
   max-width: 100%;
@@ -31,16 +37,19 @@ header{
   justify-content: space-between;
   align-items: center;
   background-color: #0D1117;
+  padding-right: 1.8vh;
+  padding-left: 1.8vh;
   height: 8vh;
-  padding-inline: 1.8vw;
 }
 
 .logo{
-  background-image: url(logo.png);
+  background-image: url(neptunelogo.png);
   background-size: contain;
   background-repeat: no-repeat;
-  width: 4.5vh;
-  height: 4.5vh;
+  position: relative;
+  top: 37px;
+  width: 15vh;
+  height: 15vh;
 }
 .right{
   display: flex;
@@ -51,7 +60,8 @@ header{
   padding: 7px 37px;
   cursor: pointer;
   color: #fff;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "nepPoppins", sans-serif !important;
+  transition: color 0.3s ease 0s;
 }
 .b2:hover{
   color: #316dca;
@@ -61,24 +71,23 @@ header{
   text-decoration: none;
   cursor: pointer;
   color: #fff;
-  background-color: #316DCA;
-  font-family: 'Poppins', sans-serif !important;
+  background: linear-gradient(38deg, rgba(69,0,245,1) 0%, rgba(4,115,255,1) 100%);
+  font-family: "nepPoppins", sans-serif !important;
   padding: 7px 37px;
   border-radius: 50px;
-  transition: color 1s ease 0s;
+  transition: color 0.9s ease 0s;
 }
 
 .b1:hover {
-    background-color: white;
-    border-radius: 10px;
-    color: #316dca;
+  background: white;
+  color: #316dca;
 }
 .bt {
   color: #fff;
   padding-left: 17.5px;
   padding-top: 200px;
   font-size: 90px;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "nepPoppins", sans-serif !important;
 }
 .shields {
   padding-left: 20.3px;
@@ -89,31 +98,38 @@ header{
   font-size: 23px;
   padding-top: 8px;
   padding-left: 20px;
-  font-family: Montserrat,sans-serif,Segoe UI Emoji;
+  font-family: "nepMonts",sans-serif,Segoe UI Emoji;
 }
 
 .intro {
   border-radius: 25px;
   padding-top: 1vh;
-  padding-left: 10vw;
-  padding-right: 10vw;
+  padding-left: 7vh;
+  padding-right: 7vh;
   color: #fff;
   background-color: #0D1117;
 }
 .intro-title {
-    font-size: 35px;
-    padding-top: 1vh;
-    text-align: center;
-    font-family: 'Poppins', sans-serif,Segoe UI Emoji !important;
+  font-size: 35px;
+  padding-top: 1vh;
+  text-align: center;
+  font-family: 'nepPoppins', sans-serif,Segoe UI Emoji !important;
 }
 .intro-desc {
-    text-indent: 20px;
-    font-weight: 400;
-    font-size: 20px;
-    padding-top: 2.5vh;
-    padding-bottom: 5vh;
-    font-family: Montserrat,sans-serif,Segoe UI Emoji;
+  text-indent: 30px;
+  font-weight: 400;
+  font-size: 20px;
+  padding-top: 2.5vh;
+  padding-bottom: 5vh;
+  font-family: "nepMonts",sans-serif,Segoe UI Emoji;
 }
 .cd-exam {
   max-width: 100%;
+}
+.mbretcy {
+  display: block;
+  margin-left: auto;
+  padding-top: 32vh;
+  margin-right: auto;
+  width: 10%;
 }
