@@ -1,12 +1,11 @@
 @font-face {
   font-family: "nepPoppins";
-  src: url("Poppins-SemiBold.ttf");
+  src: url("fonts/Poppins-SemiBold.ttf");
 }
 @font-face {
   font-family: "nepMonts";
-  src: url("Montserrat-Regular.ttf");
+  src: url("fonts/Montserrat-Regular.ttf");
 }
-
 *{
   margin:0;
   padding:0;
@@ -43,13 +42,13 @@ header{
 }
 
 .logo{
-  background-image: url(neptunelogo.png);
+  background-image: url(img/neptunelogo.png);
   background-size: contain;
   background-repeat: no-repeat;
   position: relative;
-  top: 37px;
-  width: 15vh;
-  height: 15vh;
+  padding-top: -2px;
+  width: 107.25px;
+  height: 30px;
 }
 .right{
   display: flex;
@@ -126,10 +125,11 @@ header{
 .cd-exam {
   max-width: 100%;
 }
-.mbretcy {
+.retcy {
   display: block;
   margin-left: auto;
   padding-top: 32vh;
   margin-right: auto;
   width: 10%;
+
 }
