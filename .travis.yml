@@ -12,8 +12,12 @@ python:
 
 # command to install dependencies
 install:
+  - pip install poetry
   - pip install -r requirements.txt
+  - poetry init
+  - poetry new ./neptune_lib
+
 
 # command to run tests
 script:
-  - python3 ./neptune_lib/tests/test_api.py
+  - python3 ./test_api.py
