@@ -5,10 +5,16 @@ import neptune_lib
 from neptune_lib.components.textures import *
 from neptune_lib.core import create_project
 
+import os
+
+#___________________________#
+
+script_path = os.path.dirname(__file__)
+
 #___________________________#
 
 descr = "Hi! This is My add-on" # This is The Description Variable for your project
-icon = r"C:\Users\Admin\Downloads\8. Coding Fun\nepTest\neptune_api\tests\src\pack_icon.png" # The "pack_icon.png" Path for your project
+icon = os.path.join("{}\\src".format(script_path), 'pack_icon.png') # The "pack_icon.png" Path for your project
 
 #_____Project Properties____#
 
