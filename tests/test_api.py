@@ -1,4 +1,3 @@
-<<<<<<< HEAD:tests/test_project.py
 #_____The API Module____#
 
 import neptune_lib
