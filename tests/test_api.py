@@ -2,7 +2,6 @@
 
 import neptune_lib
 
-from neptune_lib.components.textures import *
 from neptune_lib.core import create_project
 
 import os
