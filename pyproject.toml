@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "neptune_lib"
+version = "0.0.2"
+description = "An API that generates Add-ons for MCBE"
+authors = ["retr0cube <buthelo0@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.0"
+send2trash = "1.7.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

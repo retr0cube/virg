@@ -12,7 +12,7 @@ import atexit
 
 #__________________________#
 
-api_version = 'v0.0.2-p:alpha:3' # API's Version
+api_version = 'v0.0.2-p:alpha:4' # API's Version
 
 print("\033[1;33;40m Python Info \033[0m\033[1;30;40m- \033[0mYou are Using Python {}.{} \n".format(sys.version_info.major, sys.version_info.minor))
 
