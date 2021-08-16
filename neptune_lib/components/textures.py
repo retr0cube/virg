@@ -7,8 +7,6 @@
 
 
 from typing import List, Dict, Union, Optional
-import json
-
 import attr
 
 @attr.dataclass
