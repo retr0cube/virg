@@ -18,4 +18,5 @@ install:
 # command to run tests
 script:
   - pip install .
-  - poetry run python3 ./tests/test_project.py
+  - poetry run python3 ./tests/test_api.py
+
