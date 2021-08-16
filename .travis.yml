@@ -1,7 +1,5 @@
 language: python
 python:
-  - "2.7"
-  - "3.4"
   - "3.5"
   - "3.6"      # current default Python on Travis CI
   - "3.7"
@@ -18,4 +16,5 @@ install:
 # command to run tests
 script:
   - pip install .
-  - poetry run python3 ./tests/test_project.py
+  - poetry run python3 ./tests/test_api.py
+
