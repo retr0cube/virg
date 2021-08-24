@@ -1,135 +1,214 @@
+
 @font-face {
-  font-family: "nepPoppins";
+  font-family: "fontPoppins";
   src: url("fonts/Poppins-SemiBold.ttf");
 }
 @font-face {
-  font-family: "nepMonts";
+  font-family: "fontMonts";
   src: url("fonts/Montserrat-Regular.ttf");
 }
-*{
-  margin:0;
-  padding:0;
+
+:root {
+  /* --text-primary: #fff;
+  --text-secondary: #96DDFF;
+  --bg-primary: #0c0c0c;
+  --bg-secondary: #191919; */
 }
-body{
-  background-image: url(https://retr0cube.github.io/neptune_api/img1.png);
-  background-size: cover;
-  background-repeat: no-repeat;
+
+/*---------------------------*/
+
+body {
+  color: #fff;
+  background-color: #191919;
+  margin: 0;
 }
-.mid-top {
-  height: 90vh;
-  background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #0D1117 100%);
+
+.top {
+  position: relative;
+  background-image: linear-gradient(to bottom, black 0, #191919 100%);
+  padding-top: 1px;
+  padding-bottom: 3px;
+  height: 53.5vh;
 }
-.mid-medium {
-  height: 90vh;
-  padding-top: 5vw;
-  padding-right: 10vh;
-  padding-left: 10vh;
-  background: linear-gradient(to top, rgba(69,0,245,1) 0%, rgba(4,115,255,1) 100%);
+.mid {
+  position: relative;
+  background-image: linear-gradient(to top, rgba(69,0,245,1) 0%, rgba(4,115,255,1) 100%);
+  top: 215px;
+  height: 85vh;
 }
 .mid-bottom {
-  height: 46vh;
-  background: linear-gradient(to bottom, rgba(69,0,245,1) 0%, rgba(13,17,23,1) 100%);
+  position: relative;
+  background-image: ;
+  top: 155px;
+  height: 85vh;
 }
+
+.gradient {
+  position: absolute;
+  top: 90vh;
+  width: 100%;
+  overflow: hidden;
+  transform: rotate(180deg);
+}
+
+.gradient svg {
+  position: relative;
+  display: block;
+  width: calc(170% + 1.3px);
+  height: 79px;
+}
+
+.gradient .shape-fill {
+  fill: #0473FF;
+}
+
 header{
   max-width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #0D1117;
+  background-color: black;
   padding-right: 1.8vh;
   padding-left: 1.8vh;
   height: 8vh;
 }
 
+/*---------------------------*/
+
+.b1{
+  text-decoration: none;
+  font-size: 15px;
+  padding: 7px 37px;
+  cursor: pointer;
+  color: #fff;
+  font-family: "fontPoppins", sans-serif !important;
+  transition: color 0.3s ease 0s;
+}
 .logo{
-  background-image: url(img/neptunelogo.png);
+  background-image: url(img/favicon.png);
   background-size: contain;
   background-repeat: no-repeat;
   position: relative;
   padding-top: -2px;
-  width: 107.25px;
+  width: 30.25px;
   height: 30px;
 }
-.right{
-  display: flex;
-  align-items: center;
-}
-.b2{
-  text-decoration: none;
-  padding: 7px 37px;
-  cursor: pointer;
-  color: #fff;
-  font-family: "nepPoppins", sans-serif !important;
-  transition: color 0.3s ease 0s;
-}
-.b2:hover{
+.b1:hover{
   color: #316dca;
 }
 
-.b1{
+.b2{
   text-decoration: none;
+  font-size: 15px;
   cursor: pointer;
   color: #fff;
   background: linear-gradient(38deg, rgba(69,0,245,1) 0%, rgba(4,115,255,1) 100%);
-  font-family: "nepPoppins", sans-serif !important;
+  font-family: "fontPoppins", sans-serif !important;
   padding: 7px 37px;
   border-radius: 50px;
-  transition: color 0.9s ease 0s;
+  transition: color 1.2s ease 0s;
 }
 
-.b1:hover {
+.b2:hover {
   background: white;
   color: #316dca;
 }
+
+/*---------------------------*/
+
 .bt {
   color: #fff;
-  padding-left: 17.5px;
-  padding-top: 200px;
+  text-align: center;
+  padding-top: 10vh;
   font-size: 90px;
-  font-family: "nepPoppins", sans-serif !important;
+  font-family: "fontPoppins", sans-serif !important;
 }
-.shields {
-  padding-left: 20.3px;
-}
+
 .st{
-  color: #daeaf0;
+  color: #368fff;
+  text-align: center;
   font-weight: 400;
   font-size: 23px;
-  padding-top: 8px;
-  padding-left: 20px;
-  font-family: "nepMonts",sans-serif,Segoe UI Emoji;
+  position: relative;
+  left: 0px;
+  top: -90px;
+  font-family: "fontMonts",sans-serif,Segoe UI Emoji  !important;
 }
 
-.intro {
-  border-radius: 25px;
-  padding-top: 1vh;
-  padding-left: 7vh;
-  padding-right: 7vh;
-  color: #fff;
-  background-color: #0D1117;
+/*---------------------------*/
+
+.example {
+  float: right !important;
+  margin-top: 12.5vh;
+  max-width: 45rem;
 }
-.intro-title {
-  font-size: 35px;
-  padding-top: 1vh;
-  text-align: center;
-  font-family: 'nepPoppins', sans-serif,Segoe UI Emoji !important;
-}
-.intro-desc {
-  text-indent: 30px;
+.title1 {
+  position: relative;
+  font-size: 60px;
+  padding-left: 50px;
+  top: 195px;
   font-weight: 400;
-  font-size: 20px;
-  padding-top: 2.5vh;
-  padding-bottom: 5vh;
-  font-family: "nepMonts",sans-serif,Segoe UI Emoji;
+  font-family: "fontPoppins",sans-serif,Segoe UI Emoji  !important;
 }
-.cd-exam {
-  max-width: 100%;
-}
-.retcy {
-  display: block;
-  margin-left: auto;
-  padding-top: 32vh;
-  margin-right: auto;
-  width: 10%;
+.desc1 {
+  top: 145px;
+  padding-left: 50px;
+  font-weight: 500;
+  font-size: 23px;
+  position: relative;
+  font-family: "fontMonts",sans-serif,Segoe UI Emoji  !important;
 
+}
+/*---------------------------*/
+
+.gradient2 {
+    position: absolute;
+    top: 185vh;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.gradient2 svg {
+  position: relative;
+  display: block;
+  width: calc(145% + 1.3px);
+  height: 116px;
+}
+
+.gradient2 .shape-fill {
+    fill: rgba(69,0,245,1);
+}
+
+/*---------------------------*/
+.gitcy {
+  float: right !important;
+  margin-top: 22.8vh;
+  margin-right: 11vw;
+  max-width: 45rem;
+}
+.title2 {
+  position: relative;
+  font-size: 60px;
+  padding-left: 50px;
+  top: 929vh;
+  font-weight: 400;
+  font-family: "fontPoppins",sans-serif,Segoe UI Emoji  !important;
+}
+.desc2 {
+  top: 1329px;
+  padding-left: 50px;
+  font-weight: 500;
+  font-size: 23px;
+  position: relative;
+  font-family: "fontMonts",sans-serif,Segoe UI Emoji  !important;
+
+}
+/*---------------------------*/
+.retcy {
+  width: 7.5rem;
+  display: block;
+  margin-top: 14vh;
+  margin-left: auto;
+  margin-right: auto;
 }
