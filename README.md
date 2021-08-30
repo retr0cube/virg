@@ -19,9 +19,8 @@
 </div>
 
 
-# Introduction:
- - This is an API That helps you get your Add-on done quickly & easily; That said it makes Modding in ⛏ Minecraft: Bedrock Edition "Technically" easier
- with Neptune :)
+<h2 align="center">Introduction</h2>
+<p align="center"> ◆ This is an API That helps you get your Add-on done quickly & easily; That said it makes Modding in ⛏ Minecraft: Bedrock Edition "Technically" easier with Neptune :)</p>
 
 
 ## Useful Links:
