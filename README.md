@@ -19,13 +19,15 @@
 </div>
 
 
-<h2 align="center">Introduction</h2>
-<p align="center"> ◆ This is an API That helps you get your Add-on done quickly & easily; That said it makes Modding in ⛏ Minecraft: Bedrock Edition "Technically" easier with Neptune :)</p>
+<h1 align="center">Introduction</h1>
+<p align="center"> This is an API That helps you get your Add-on done quickly & easily; That said it makes Modding in ⛏ Minecraft: Bedrock Edition "Technically" easier with Neptune :)</p>
 
+<h2 align="center">Useful Links</h2> 
 
-## Useful Links:
-
-
-- Wiki -> https://github.com/retr0cube/neptune_api/wiki
-- Downloads -> https://github.com/retr0cube/neptune_api/releases
+<p align="center">
+- Wiki -> https://github.com/retr0cube/neptune_api/wiki <br>
+- Downloads -> https://github.com/retr0cube/neptune_api/releases <br>
 - Website -> https://retr0cube.github.io/neptune_api
+</p>
+
+
