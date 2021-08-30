@@ -20,7 +20,7 @@
 
 
 # Introduction:
- - This is an API That helps Developers & New comers get Their Add-on done quickly & easily; That said it makes Modding in ⛏ Minecraft: Bedrock Edition "Technically" easier
+ - This is an API That helps you get your Add-on done quickly & easily; That said it makes Modding in ⛏ Minecraft: Bedrock Edition "Technically" easier
  with Neptune :)
 
 
