@@ -27,7 +27,6 @@
 <p align="center">
 ● Wiki -> https://github.com/retr0cube/neptune_api/wiki <br>
 ● Downloads -> https://github.com/retr0cube/neptune_api/releases <br>
-● Website -> https://retr0cube.github.io/neptune_api
 </p>
 
 
